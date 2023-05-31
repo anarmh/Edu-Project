@@ -1,0 +1,39 @@
+﻿@model List<CourseVM>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container-fluid">
+    <a class="btn btn-success">Create</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Image</th>
+                <th scope="col">Price</th>
+                <th scope="col">Description</th>
+                <th scope="col">Capacity</th>
+                <th scope="col">Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var course in Model)
+            {
+             <tr>
+                <td><img src="~/img/@course.CourseImgs.FirstOrDefault().ImgUrl" style="width:120px;height:75px;" /></td>
+                <td>$@course.Price</td>
+                <td>@course.Description</td>
+                <td>@course.Capacity</td>
+                <td>
+                    <a asp-action="Detail" asp-route-id="@course.Id" class="btn btn-info">Detail</a>
+                    <a class="btn btn-warning">Edit</a>
+                    <a class="btn btn-danger">Delete</a>
+                    
+                </td>
+            </tr>
+            }
+          
+           
+        </tbody>
+    </table>
+</div>
+
